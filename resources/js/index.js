@@ -65,6 +65,8 @@ const itemContainer = document.querySelector('#item-container')
 let array = []
 let cena 
 
+kupacInput.value = ''
+napomenaText.value = ''
 
 dinos.forEach((el) => {
     const dinoOption = document.createElement('option')
@@ -85,6 +87,7 @@ forma.addEventListener('submit', (e) => {
     if(kupacInput.value.trim() === '' || kupacInput.value.length < 4 || !Number.isNaN(Number(kupacInput.value))){
         console.log('Unos ne moze biti prazan/Mora biti veci od 4 slova')
         kupacInput.value = ''
+        napomenaText.value = ''
         return
     }
 
@@ -102,8 +105,6 @@ forma.addEventListener('submit', (e) => {
         napomenaText.value = '/'
     }
 
-
-
     const item = document.createElement('div')
     item.className = "item"
     item.innerHTML = `
@@ -117,6 +118,9 @@ forma.addEventListener('submit', (e) => {
     deleteBtn.addEventListener('click', (e) => {
         deleteBtn.parentElement.remove()
     })
+
+    kupacInput.value = ''
+    napomenaText.value = ''
 
     item.append(deleteBtn)
     itemContainer.append(item)
